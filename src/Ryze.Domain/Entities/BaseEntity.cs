@@ -1,5 +1,6 @@
 ﻿namespace Ryze.Domain.Entities;
 
+
 public class BaseEntity
 {
     public Guid Id { get; set; } = Guid.NewGuid();
@@ -7,8 +8,4 @@ public class BaseEntity
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
-
-    public User LastUpdatedBy { get; set; } = new User();
-
-    public User CreatedBy { get; set; } = new User();
 }

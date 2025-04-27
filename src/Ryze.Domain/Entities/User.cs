@@ -1,4 +1,6 @@
-﻿namespace Ryze.Domain.Entities;
+﻿using Ryze.Domain.Enums;
+
+namespace Ryze.Domain.Entities;
 
 public class User : BaseEntity
 {
@@ -6,6 +8,7 @@ public class User : BaseEntity
 
     public string Email { get; set; } = string.Empty;
 
+    public bool EmailConfirmed { get; set; } = false;
     public string Password { get; set; } = string.Empty;
 
     public string Phone { get; set; } = string.Empty;
@@ -13,4 +16,10 @@ public class User : BaseEntity
     public bool FirstLogin { get; set; } = true;
 
     public bool IsActive { get; set; } = true;
+
+    public UserGender Gender { get; set; }
+
+    public DateTime BirthDate { get; set; }
+
+
 }

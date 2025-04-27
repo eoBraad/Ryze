@@ -11,4 +11,10 @@ public class Company : BaseEntity
     public string CompanyAddress { get; set; } = string.Empty;
 
     public decimal CompanyRevenuePerYear { get; set; }
+
+    public string CompanyWebsite { get; set; } = string.Empty;
+
+    public string CompanyDescription { get; set; } = string.Empty;
+
+    public string CompanyCnpj { get; set; } = string.Empty;
 }

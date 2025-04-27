@@ -1,6 +1,6 @@
 ﻿namespace Ryze.Domain.Entities;
 
-public class Teams : BaseEntity
+public class Team : BaseEntity
 {
     public string TeamName { get; set; } = string.Empty;
 

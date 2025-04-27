@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Ryze.Infrastructure;
+using Ryze.Infrastructure.Database;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddInfrastructure(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
