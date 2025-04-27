@@ -10,4 +10,8 @@
       <Folder Include="wwwroot\js\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Ryze.Domain\Ryze.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
