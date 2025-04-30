@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Ryze.Infrastructure;
 using Ryze.Infrastructure.Database;
 using Scalar.AspNetCore;
 
@@ -13,6 +14,8 @@ builder.Services.AddDbContext<RyzeDbContext>(c =>
 {
     c.UseNpgsql();
 });
+
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
