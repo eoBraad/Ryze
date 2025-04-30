@@ -16,7 +16,7 @@ public static class InfrastructureDi
         var expirationInMinutes = uint.Parse(configuration.GetSection("Jwt:ExpiresInMinutes").Value!);
         
         services.AddDbContext<RyzeDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         services.AddScoped<IAccessTokenGenerator>(c => new JwtTokenGenerator(expirationInMinutes, signKey!));
     }

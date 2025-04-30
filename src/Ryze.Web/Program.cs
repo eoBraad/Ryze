@@ -13,7 +13,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-builder.Services.AddDbContext<RyzeDbContext>(c => { c.UseNpgsql(); });
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
