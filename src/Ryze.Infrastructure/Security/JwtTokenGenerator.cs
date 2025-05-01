@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Ryze.Domain.Entities;
-using Ryze.Domain.Interfaces;
+using Ryze.Domain.Interfaces.Generators;
 
 namespace Ryze.Infrastructure.Security;
 

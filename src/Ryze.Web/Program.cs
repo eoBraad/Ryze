@@ -2,6 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Ryze.Application;
 using Ryze.Domain.Entities;
 using Ryze.Domain.Enums;
 using Ryze.Infrastructure;
@@ -15,6 +16,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplicationServices();
 
 var key = builder.Configuration.GetSection("Jwt:Key").Value;
 

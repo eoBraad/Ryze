@@ -1,0 +1,22 @@
+﻿using FluentValidation;
+using Ryze.Application.Services.User.Login.Dtos;
+
+namespace Ryze.Application.Services.User.Login;
+
+public class LoginUserValidations : AbstractValidator<LoginUserRequestDto>
+{
+    public LoginUserValidations()
+    {
+        RuleFor(u => u.Email)
+            .NotEmpty()
+            .WithMessage("Email is required.")
+            .EmailAddress()
+            .WithMessage("Invalid email format.");
+
+        RuleFor(u => u.Password)
+            .NotEmpty()
+            .WithMessage("Password is required.")
+            .MinimumLength(6)
+            .WithMessage("Password must be at least 6 characters long.");
+    }
+}
