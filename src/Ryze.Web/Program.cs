@@ -7,12 +7,19 @@ using Ryze.Domain.Entities;
 using Ryze.Domain.Enums;
 using Ryze.Infrastructure;
 using Ryze.Infrastructure.Database;
+using Ryze.Web.Filter;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(c =>
+{
+    c.Filters.Add<RyzeExceptionFilter>();
+});
+
+builder.Services.AddRouting(r => r.LowercaseUrls = true);
+
 builder.Services.AddOpenApi();
 
 builder.Services.AddInfrastructure(builder.Configuration);
