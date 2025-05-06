@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Ryze.Infrastructure.Database;
@@ -11,9 +12,11 @@ using Ryze.Infrastructure.Database;
 namespace Ryze.Infrastructure.Migrations
 {
     [DbContext(typeof(RyzeDbContext))]
-    partial class RyzeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250506022227_AddAdminUserWithStrongestPassword")]
+    partial class AddAdminUserWithStrongestPassword
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

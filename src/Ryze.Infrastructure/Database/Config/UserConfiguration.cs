@@ -31,7 +31,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             Id = Guid.Parse("e3f9e4e2-1f34-4d2b-a79f-5c3281a21e9b"), // GUID fixo!
             Name = "ADMIN",
             Email = "admin@admin.com",
-            Password = BCrypt.Net.BCrypt.HashPassword("admin"), // Em produção, use hash!
+            Password = BCrypt.Net.BCrypt.HashPassword("171918Jo@0"), // Em produção, use hash!
             Role = UserRoles.GlobalAdmin,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
