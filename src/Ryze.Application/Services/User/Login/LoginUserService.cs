@@ -16,7 +16,7 @@ public class LoginUserService(IUserRepository repository, IPasswordEncripterGene
     {
         ValidateRequest(request);
         
-        var user = await _userRepository.GetUserByEmail(request.Email);
+        var user = await _userRepository.GetUserByEmailAsync(request.Email);
 
         if (user == null)
         {
