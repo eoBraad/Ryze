@@ -1,14 +1,24 @@
-﻿using Ryze.Domain.Interfaces.Repositories;
+﻿using AutoMapper;
+using Ryze.Application.Exceptions;
+using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
+using Ryze.Domain.Interfaces.Repositories;
 
-namespace Ryze.Application.Services.User.GetAuthenticatedUser;
-
-public class GetAuthenticatedUser(IUserRepository repository) : IGetAuthenticatedUser
+namespace Ryze.Application.Services.User.GetAuthenticatedUser
 {
-    private readonly IUserRepository _userRepository = repository;
-    public async Task<Domain.Entities.User?> ExecuteAsync(Guid userId)
+    public class GetAuthenticatedUser(IUserRepository repository, IMapper mapper) : IGetAuthenticatedUser
     {
-        var user = await _userRepository.GetByIdAsync(userId);
-        
-        return user;
+        private readonly IUserRepository _userRepository = repository;
+        private readonly IMapper _mapper = mapper;
+        public async Task<GetAuthenticatedUserDto> ExecuteAsync(Guid userId)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+            
+            if (user == null)
+            {
+                throw new ValidationException(["User not found"]);
+            }
+            
+            return _mapper.Map<GetAuthenticatedUserDto>(user);
+        }
     }
 }

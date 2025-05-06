@@ -1,6 +1,8 @@
-﻿namespace Ryze.Application.Services.User.GetAuthenticatedUser;
+﻿using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
+
+namespace Ryze.Application.Services.User.GetAuthenticatedUser;
 
 public interface IGetAuthenticatedUser
 {
-    Task<Domain.Entities.User?> ExecuteAsync(Guid userId);
+    Task<GetAuthenticatedUserDto?> ExecuteAsync(Guid userId);
 }
