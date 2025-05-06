@@ -236,23 +236,6 @@ namespace Ryze.Infrastructure.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("Users", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("e3f9e4e2-1f34-4d2b-a79f-5c3281a21e9b"),
-                            BirthDate = new DateTime(2005, 5, 6, 0, 35, 36, 397, DateTimeKind.Utc).AddTicks(6299),
-                            CreatedAt = new DateTime(2025, 5, 6, 0, 35, 36, 397, DateTimeKind.Utc).AddTicks(5906),
-                            Email = "admin@admin.com",
-                            FirstLogin = false,
-                            Gender = 3,
-                            IsActive = true,
-                            Name = "ADMIN",
-                            Password = "$2a$11$TQ6srQ.hJoZWly24WZmrV.OXivdLWVlJutlxNmDdeU6KJVyvNRM86",
-                            Phone = "(11) 99999-9999",
-                            Role = "GlobalAdmin",
-                            UpdatedAt = new DateTime(2025, 5, 6, 0, 35, 36, 397, DateTimeKind.Utc).AddTicks(6055)
-                        });
                 });
 
             modelBuilder.Entity("Ryze.Domain.Entities.Company", b =>
