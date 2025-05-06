@@ -11,8 +11,13 @@ public class UserRepository(RyzeDbContext context) : IUserRepository
     private readonly RyzeDbContext _context = context;
     
 
-    public async Task<User?> GetUserByEmail(string email)
+    public async Task<User?> GetUserByEmailAsync(string email)
     {
         return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+    }
+
+    public Task<User?> GetByIdAsync(Guid userId)
+    {
+        return _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
     }
 }

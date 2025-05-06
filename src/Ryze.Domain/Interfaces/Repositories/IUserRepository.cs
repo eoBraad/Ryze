@@ -4,7 +4,7 @@ namespace Ryze.Domain.Interfaces.Repositories;
 
 public interface IUserRepository
 {
-    Task<User?> GetUserByEmail(string email);
+    Task<User?> GetUserByEmailAsync(string email);
     
-    
+    Task<User?> GetByIdAsync(Guid userId);
 }
