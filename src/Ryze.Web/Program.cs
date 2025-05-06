@@ -22,6 +22,16 @@ builder.Services.AddRouting(r => r.LowercaseUrls = true);
 
 builder.Services.AddOpenApi();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplicationServices();
 
@@ -60,6 +70,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AllowAll");
 
 app.MapControllers();
 

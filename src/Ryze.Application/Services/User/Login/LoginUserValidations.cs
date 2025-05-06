@@ -16,7 +16,7 @@ public class LoginUserValidations : AbstractValidator<LoginUserRequestDto>
         RuleFor(u => u.Password)
             .NotEmpty()
             .WithMessage("Password is required.")
-            .MinimumLength(6)
+            .MinimumLength(5)
             .WithMessage("Password must be at least 6 characters long.");
     }
 }
