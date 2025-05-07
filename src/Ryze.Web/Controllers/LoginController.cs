@@ -25,6 +25,10 @@ public class LoginController : ControllerBase
 
         Response.Cookies.Append("token", result.Token, cookieOptions);
         
+        cookieOptions.Expires = DateTime.UtcNow.AddDays(1);
+        
+        Response.Cookies.Append("refreshToken", result.RefreshToken, cookieOptions);
+        
         return Ok(result);
     }
     

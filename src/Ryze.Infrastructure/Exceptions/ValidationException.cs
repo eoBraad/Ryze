@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Ryze.Application.Exceptions;
+namespace Ryze.Infrastructure.Exceptions;
 
 public class ValidationException(List<string> errorMessages) : RyzeException(string.Empty)
 {

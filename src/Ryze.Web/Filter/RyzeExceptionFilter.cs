@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Ryze.Application.Exceptions;
+using Ryze.Infrastructure.Exceptions;
 using Ryze.Application.Responses;
 
 namespace Ryze.Web.Filter;

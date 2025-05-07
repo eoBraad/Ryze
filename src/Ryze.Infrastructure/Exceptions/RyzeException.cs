@@ -1,4 +1,4 @@
-﻿namespace Ryze.Application.Exceptions;
+﻿namespace Ryze.Infrastructure.Exceptions;
 
 public abstract class RyzeException(string message) : SystemException(message)
 {
