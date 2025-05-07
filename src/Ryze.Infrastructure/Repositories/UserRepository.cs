@@ -6,9 +6,10 @@ using Ryze.Infrastructure.Database;
 
 namespace Ryze.Infrastructure.Repositories;
 
-public class UserRepository(RyzeDbContext context) : IUserRepository
+public class UserRepository(RyzeDbContext context, IWorkUnity workUnity) : IUserRepository
 {
     private readonly RyzeDbContext _context = context;
+    private readonly IWorkUnity _workUnity = workUnity;
     
 
     public async Task<User?> GetUserByEmailAsync(string email)

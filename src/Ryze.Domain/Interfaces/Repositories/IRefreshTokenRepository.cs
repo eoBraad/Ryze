@@ -7,4 +7,6 @@ public interface IRefreshTokenRepository
     public Task AddRefreshTokenAsync(RefreshToken refreshToken);
     
     public Task RevokeRefreshTokenAsync(string token);
+    
+    public Task<RefreshToken?> GetRefreshTokenAsync(string token);
 }

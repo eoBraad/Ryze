@@ -6,13 +6,15 @@ using Ryze.Infrastructure.Database;
 
 namespace Ryze.Infrastructure.Repositories;
 
-public class RefreshTokenRepository(RyzeDbContext context) : IRefreshTokenRepository
+public class RefreshTokenRepository(RyzeDbContext context, IWorkUnity workUnity) : IRefreshTokenRepository
 {
     private readonly RyzeDbContext _context = context;
+    private readonly IWorkUnity _workUnity = workUnity;
 
     public async Task AddRefreshTokenAsync(RefreshToken refreshToken)
     {
         await _context.RefreshTokens.AddAsync(refreshToken);
+        await _workUnity.SaveChangesAsync();
     }
 
     public async Task RevokeRefreshTokenAsync(string token)
@@ -26,5 +28,13 @@ public class RefreshTokenRepository(RyzeDbContext context) : IRefreshTokenReposi
         refreshToken.IsRevoked = true;
 
         _context.RefreshTokens.Update(refreshToken);
+        await _workUnity.SaveChangesAsync();
+    }
+
+    public Task<RefreshToken?> GetRefreshTokenAsync(string token)
+    {
+        return _context.RefreshTokens
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.Token == token && t.IsRevoked == false);
     }
 }

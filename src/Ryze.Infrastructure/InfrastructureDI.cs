@@ -28,5 +28,7 @@ public static class InfrastructureDi
     private static void AddRepositories(IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IWorkUnity, WorkUnity>();
     }
 }

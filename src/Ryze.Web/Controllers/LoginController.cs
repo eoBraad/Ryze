@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Ryze.Application.Services.Login.GetAuthenticatedUser;
 using Ryze.Application.Services.Login.LoginUser;
+using Ryze.Application.Services.Login.RefreshJwt;
+using Ryze.Application.Services.Login.RefreshJwt.Dtos;
 using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
 using Ryze.Application.Services.User.Login.Dtos;
 
@@ -47,5 +49,15 @@ public class LoginController : ControllerBase
         }
         
         return Ok(user);
+    }
+
+    [HttpPost($"refresh")]
+    [ProducesResponseType(typeof(RefreshTokenResponseDto), 200)]
+    public async Task<IActionResult> GetNewRefreshToken([FromBody] RefreshTokenRequestDto dto,
+        [FromServices] IRefreshJwtService service)
+    {
+        var result = await service.RefreshToken(dto);
+        
+        return Ok(result);
     }
 }
