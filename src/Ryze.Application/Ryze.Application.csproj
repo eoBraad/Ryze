@@ -15,4 +15,8 @@
       <ProjectReference Include="..\Ryze.Infrastructure\Ryze.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Services\Login\RefreshJwt\" />
+    </ItemGroup>
+
 </Project>

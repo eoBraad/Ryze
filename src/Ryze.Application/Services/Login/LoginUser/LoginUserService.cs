@@ -5,7 +5,7 @@ using Ryze.Domain.Interfaces.Generators;
 using Ryze.Domain.Interfaces.Repositories;
 using Ryze.Infrastructure.Exceptions;
 
-namespace Ryze.Application.Services.User.Login;
+namespace Ryze.Application.Services.Login.LoginUser;
 
 public class LoginUserService(IUserRepository repository, 
     IPasswordEncripterGenerator passwordEncripterGenerator, 

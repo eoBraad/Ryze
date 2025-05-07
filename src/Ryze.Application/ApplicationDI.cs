@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Ryze.Application.Services.User.GetAuthenticatedUser;
-using Ryze.Application.Services.User.Login;
+using Ryze.Application.Services.Login.LoginUser;
 using Ryze.Domain.Interfaces.Generators;
 
 namespace Ryze.Application;

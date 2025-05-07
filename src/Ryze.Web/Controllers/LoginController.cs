@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ryze.Application.Services.User.GetAuthenticatedUser;
-using Ryze.Application.Services.User.Login;
+using Ryze.Application.Services.Login.LoginUser;
+using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
 using Ryze.Application.Services.User.Login.Dtos;
 
 namespace Ryze.Web.Controllers;
@@ -11,6 +12,7 @@ namespace Ryze.Web.Controllers;
 public class LoginController : ControllerBase
 {
     [HttpPost]
+    [ProducesResponseType(typeof(LoginUserResponseDto), 200)]
     public async Task<IActionResult> LoginUser([FromBody] LoginUserRequestDto dto, [FromServices] ILoginUserService service)
     {
         var result = await service.LoginUser(dto);
@@ -34,6 +36,7 @@ public class LoginController : ControllerBase
     
     [HttpGet]
     [Authorize]
+    [ProducesResponseType(typeof(GetAuthenticatedUserDto), 200)]
     public async Task<IActionResult> GetCurrentAuthenticatedUser([FromServices] IGetAuthenticatedUser service)
     {
         var user = await service.ExecuteAsync(Guid.Parse(User.FindFirst("id")!.Value));
