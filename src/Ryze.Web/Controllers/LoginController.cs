@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Ryze.Application.Services.User.GetAuthenticatedUser;
+using Ryze.Application.Services.Login.GetAuthenticatedUser;
 using Ryze.Application.Services.Login.LoginUser;
 using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
 using Ryze.Application.Services.User.Login.Dtos;

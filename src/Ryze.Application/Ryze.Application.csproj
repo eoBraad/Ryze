@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <Folder Include="Services\Login\RefreshJwt\" />
+      <Folder Include="Services\User\" />
     </ItemGroup>
 
 </Project>

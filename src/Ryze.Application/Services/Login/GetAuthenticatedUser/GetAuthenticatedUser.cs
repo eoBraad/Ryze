@@ -3,7 +3,7 @@ using Ryze.Infrastructure.Exceptions;
 using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
 using Ryze.Domain.Interfaces.Repositories;
 
-namespace Ryze.Application.Services.User.GetAuthenticatedUser
+namespace Ryze.Application.Services.Login.GetAuthenticatedUser
 {
     public class GetAuthenticatedUser(IUserRepository repository, IMapper mapper) : IGetAuthenticatedUser
     {
