@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Ryze.Application.Services.User.GetAuthenticatedUser;
 using Ryze.Application.Services.User.Login;
 using Ryze.Domain.Interfaces.Generators;
 
@@ -10,5 +11,6 @@ public static class ApplicationDI
     {
         services.AddAutoMapper(typeof(ApplicationDI));
         services.AddScoped<ILoginUserService, LoginUserService>();
+        services.AddScoped<IGetAuthenticatedUser, GetAuthenticatedUser>();
     }
 }

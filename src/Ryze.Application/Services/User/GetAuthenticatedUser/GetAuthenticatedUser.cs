@@ -9,7 +9,7 @@ namespace Ryze.Application.Services.User.GetAuthenticatedUser
     {
         private readonly IUserRepository _userRepository = repository;
         private readonly IMapper _mapper = mapper;
-        public async Task<GetAuthenticatedUserDto> ExecuteAsync(Guid userId)
+        public async Task<GetAuthenticatedUserDto?> ExecuteAsync(Guid userId)
         {
             var user = await _userRepository.GetByIdAsync(userId);
             
