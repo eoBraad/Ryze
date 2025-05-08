@@ -7,3 +7,6 @@
       - ./src:/app/src
     ports:
       - "5144:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
