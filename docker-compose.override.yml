@@ -1,0 +1,9 @@
+﻿services:
+  projeto-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/app/src
+    ports:
+      - "5144:80"

@@ -152,6 +152,36 @@ namespace Ryze.Infrastructure.Migrations
                     b.ToTable("Leads", (string)null);
                 });
 
+            modelBuilder.Entity("Ryze.Domain.Entities.RefreshToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RefreshTokens");
+                });
+
             modelBuilder.Entity("Ryze.Domain.Entities.Team", b =>
                 {
                     b.Property<Guid>("Id")
@@ -241,17 +271,17 @@ namespace Ryze.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("e3f9e4e2-1f34-4d2b-a79f-5c3281a21e9b"),
-                            BirthDate = new DateTime(2005, 5, 7, 16, 29, 28, 636, DateTimeKind.Utc).AddTicks(247),
-                            CreatedAt = new DateTime(2025, 5, 7, 16, 29, 28, 635, DateTimeKind.Utc).AddTicks(9465),
+                            BirthDate = new DateTime(2005, 5, 8, 16, 56, 38, 317, DateTimeKind.Utc).AddTicks(255),
+                            CreatedAt = new DateTime(2025, 5, 8, 16, 56, 38, 316, DateTimeKind.Utc).AddTicks(9674),
                             Email = "admin@admin.com",
                             FirstLogin = false,
                             Gender = 3,
                             IsActive = true,
                             Name = "ADMIN",
-                            Password = "$2a$11$6sug4ujNHs3wffWrCYI6Wu1T4SwyyfWGoAK/7aZOVbma8KvqIni4a",
+                            Password = "$2a$11$.O/LJShyMhARjw3pc9kK2ePLKyMUYrkP/3i5bh50lv0Gdlw.npQsi",
                             Phone = "(11) 99999-9999",
                             Role = "GlobalAdmin",
-                            UpdatedAt = new DateTime(2025, 5, 7, 16, 29, 28, 635, DateTimeKind.Utc).AddTicks(9665)
+                            UpdatedAt = new DateTime(2025, 5, 8, 16, 56, 38, 316, DateTimeKind.Utc).AddTicks(9890)
                         });
                 });
 
