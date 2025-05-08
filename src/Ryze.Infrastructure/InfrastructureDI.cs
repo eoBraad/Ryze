@@ -21,6 +21,7 @@ public static class InfrastructureDi
 
         services.AddScoped<IAccessTokenGenerator>(c => new JwtTokenGenerator(expirationInMinutes, signKey!));
         services.AddScoped<IPasswordEncripterGenerator, PasswordEncripter>();
+        services.AddScoped<IRefreshTokenGenerator, RefreshTokenGenerator>();
         
         AddRepositories(services);
     }

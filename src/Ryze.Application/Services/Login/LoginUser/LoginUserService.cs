@@ -10,13 +10,13 @@ namespace Ryze.Application.Services.Login.LoginUser;
 public class LoginUserService(IUserRepository repository, 
     IPasswordEncripterGenerator passwordEncripterGenerator, 
     IAccessTokenGenerator tokenGenerator,
-    IRefreshTokenGenerator refrashTokengenerator, 
+    IRefreshTokenGenerator refreshTokenGenerator, 
     IRefreshTokenRepository refreshTokenRepository) : ILoginUserService
 {
     private readonly IUserRepository _userRepository = repository;
     private readonly IPasswordEncripterGenerator _passwordEncripterGenerator = passwordEncripterGenerator;
     private readonly IAccessTokenGenerator _tokenGenerator = tokenGenerator;
-    private readonly IRefreshTokenGenerator _refreshTokengenerator = refrashTokengenerator;
+    private readonly IRefreshTokenGenerator _refreshTokenGenerator = refreshTokenGenerator;
     private readonly IRefreshTokenRepository _refreshTokenRepository = refreshTokenRepository;
     
     public async Task<LoginUserResponseDto> LoginUser(LoginUserRequestDto request)
@@ -39,7 +39,7 @@ public class LoginUserService(IUserRepository repository,
         
         var token = _tokenGenerator.Generate(user);
         
-        var refreshToken = _refreshTokengenerator.Generate();
+        var refreshToken = _refreshTokenGenerator.Generate();
 
         var refreshTokenTokenEntity = new RefreshToken()
         {
