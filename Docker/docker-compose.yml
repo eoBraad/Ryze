@@ -1,15 +1,16 @@
 ﻿services:
-  projeto-api:
+  ryze-api:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../
+      dockerfile: Docker/Dockerfile
     ports:
       - "5144:80"
     depends_on:
       - postgres
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=ProjetoDb;Username=postgres;Password=123456
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=ryze_db;Username=postgres;Password=root
 
   postgres:
     image: postgres:16

@@ -19,7 +19,7 @@ public class LoginController : ControllerBase
     {
         var result = await service.LoginUser(dto);
         
-        var cookieOptions = new CookieOptions
+        var jwtCookieOptions = new CookieOptions
         {
             HttpOnly = true,           
             Secure = false,             
@@ -27,11 +27,17 @@ public class LoginController : ControllerBase
             Expires = DateTime.UtcNow.AddMinutes(5)
         };
 
-        Response.Cookies.Append("token", result.Token, cookieOptions);
+        Response.Cookies.Append("token", result.Token, jwtCookieOptions);
         
-        cookieOptions.Expires = DateTime.UtcNow.AddDays(1);
+        var refreshCookieOptions = new CookieOptions
+        {
+            HttpOnly = true,           
+            Secure = false,             
+            SameSite = SameSiteMode.Strict, 
+            Expires = DateTime.UtcNow.AddMinutes(5)
+        };
         
-        Response.Cookies.Append("refreshToken", result.RefreshToken, cookieOptions);
+        Response.Cookies.Append("refreshToken", result.RefreshToken, refreshCookieOptions);
         
         return Ok(result);
     }
@@ -57,6 +63,26 @@ public class LoginController : ControllerBase
         [FromServices] IRefreshJwtService service)
     {
         var result = await service.RefreshToken(dto);
+        
+        var jwtCookieOptions = new CookieOptions
+        {
+            HttpOnly = true,           
+            Secure = false,             
+            SameSite = SameSiteMode.Strict, 
+            Expires = DateTime.UtcNow.AddMinutes(5)
+        };
+
+        Response.Cookies.Append("token", result.AccessToken, jwtCookieOptions);
+        
+        var refreshCookieOptions = new CookieOptions
+        {
+            HttpOnly = true,           
+            Secure = false,             
+            SameSite = SameSiteMode.Strict, 
+            Expires = DateTime.UtcNow.AddMinutes(5)
+        };
+        
+        Response.Cookies.Append("refreshToken", result.RefreshToken, refreshCookieOptions);
         
         return Ok(result);
     }

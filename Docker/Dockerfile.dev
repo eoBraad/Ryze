@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copia tudo para dentro do container
 COPY src/ ./src/
-WORKDIR /app/src/ProjetoApi
+WORKDIR /app/src/Ryze.Web
 
 # Ferramentas úteis
 RUN dotnet tool install --global dotnet-ef
@@ -14,4 +14,4 @@ ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN dotnet restore
 
 # Inicia com watch
-CMD ["dotnet", "watch", "--no-hot-reload", "run", "--urls=http://0.0.0.0:80"]
+CMD ["dotnet", "watch", "--no-hot-reload", "--project", "/app/src/Ryze.Web", "run", "--urls=http://0.0.0.0:80"]

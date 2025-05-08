@@ -6,7 +6,7 @@ WORKDIR /app
 COPY src/ ./src/
 
 # Restaura os pacotes NuGet
-WORKDIR /app/src/ProjetoApi
+WORKDIR /app/src/Ryze.Web
 RUN dotnet restore
 
 # Build em modo Release
@@ -23,4 +23,4 @@ COPY --from=build /app/publish .
 EXPOSE 80
 
 # Comando para iniciar a aplicação
-ENTRYPOINT ["dotnet", "ProjetoApi.dll"]
+ENTRYPOINT ["dotnet", "Ryze.Web.dll"]

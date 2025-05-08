@@ -35,6 +35,6 @@ public class RefreshTokenRepository(RyzeDbContext context, IWorkUnity workUnity)
     {
         return _context.RefreshTokens
             .AsNoTracking()
-            .FirstOrDefaultAsync(t => t.Token == token && t.IsRevoked == false);
+            .FirstOrDefaultAsync(t => t.Token == token);
     }
 }
