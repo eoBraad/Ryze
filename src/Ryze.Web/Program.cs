@@ -56,8 +56,8 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorizationBuilder()
     .AddPolicy(nameof(UserRoles.GlobalAdmin), policy => policy.RequireRole(nameof(UserRoles.GlobalAdmin)))
-    .AddPolicy(nameof(UserRoles.Manager), policy => policy.RequireRole(nameof(UserRoles.GlobalAdmin)))
-    .AddPolicy(nameof(UserRoles.Seller), policy => policy.RequireRole(nameof(UserRoles.GlobalAdmin)));
+    .AddPolicy(nameof(UserRoles.Manager), policy => policy.RequireRole(nameof(UserRoles.Manager)))
+    .AddPolicy(nameof(UserRoles.Seller), policy => policy.RequireRole(nameof(UserRoles.Seller)));
 
 var app = builder.Build();
 

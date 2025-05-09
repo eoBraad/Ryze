@@ -2,6 +2,7 @@
 using Ryze.Application.Services.Login.GetAuthenticatedUser;
 using Ryze.Application.Services.Login.LoginUser;
 using Ryze.Application.Services.Login.RefreshJwt;
+using Ryze.Application.Services.User.CreateUser;
 using Ryze.Domain.Interfaces.Generators;
 
 namespace Ryze.Application;
@@ -14,5 +15,6 @@ public static class ApplicationDI
         services.AddScoped<ILoginUserService, LoginUserService>();
         services.AddScoped<IGetAuthenticatedUser, GetAuthenticatedUser>();
         services.AddScoped<IRefreshJwtService, RefreshJwtService>();
+        services.AddScoped<ICreateUserService, CreateUserService>();
     }
 }
