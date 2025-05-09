@@ -13,7 +13,8 @@ public class UserController : ControllerBase
 {
     [HttpPost] 
     [ProducesResponseType(typeof(Guid), 200)]
-    [Authorize($"{nameof(UserRoles.GlobalAdmin)}.{nameof(UserRoles.Manager)}")]
+    [Authorize($"{nameof(UserRoles.GlobalAdmin)}")]
+    [Authorize($"{nameof(UserRoles.Manager)}")]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequestDto dto, [FromServices] ICreateUserService service)
     {
         var result = await service.CreateUserAsync(dto);
