@@ -17,8 +17,8 @@ public class JwtTokenGenerator(uint tokenExpirationInMinutes, string secretKey) 
     {
         var claims = new[]
         {
-            new Claim("id", user.Id.ToString()),
-            new Claim("role", user.Role.ToString())
+            new Claim(ClaimTypes.Sid, user.Id.ToString()),
+            new Claim(ClaimTypes.Role, user.Role.ToString())
         };
         
         var tokenDescriptor = new SecurityTokenDescriptor

@@ -20,7 +20,9 @@ public class CreateUserService(IMapper mapper, IPasswordEncripterGenerator encri
 
         user.Password = _passwordEncripterGenerator.Encrypt(user.Password);
         
-        var userAlreadyExists = _userRepository.GetUserByEmailAsync(user.Email);
+        user.BirthDate = DateTime.SpecifyKind(user.BirthDate, DateTimeKind.Utc);
+        
+        var userAlreadyExists = await _userRepository.GetUserByEmailAsync(user.Email);
         
         if (userAlreadyExists != null)
         {
