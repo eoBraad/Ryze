@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Identity.Client;
 using Ryze.Domain.Entities;
 using Ryze.Domain.Interfaces.Repositories;
@@ -20,5 +21,14 @@ public class UserRepository(RyzeDbContext context, IWorkUnity workUnity) : IUser
     public Task<User?> GetByIdAsync(Guid userId)
     {
         return _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+    }
+
+    public async Task<User> CreateUserAsync(User user)
+    {
+        var newUser =  await  _context.Users.AddAsync(user);
+        
+        await _workUnity.SaveChangesAsync();
+        
+        return newUser.Entity;
     }
 }
