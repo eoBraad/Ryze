@@ -130,6 +130,10 @@ namespace Ryze.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("LeadOrigin")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<decimal>("LeadValue")
                         .HasColumnType("decimal(18,2)");
 
@@ -150,6 +154,39 @@ namespace Ryze.Infrastructure.Migrations
                     b.HasIndex("ContactId");
 
                     b.ToTable("Leads", (string)null);
+                });
+
+            modelBuilder.Entity("Ryze.Domain.Entities.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("LeadId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Ryze.Domain.Entities.RefreshToken", b =>
@@ -271,17 +308,17 @@ namespace Ryze.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("e3f9e4e2-1f34-4d2b-a79f-5c3281a21e9b"),
-                            BirthDate = new DateTime(2005, 5, 8, 16, 56, 38, 317, DateTimeKind.Utc).AddTicks(255),
-                            CreatedAt = new DateTime(2025, 5, 8, 16, 56, 38, 316, DateTimeKind.Utc).AddTicks(9674),
+                            BirthDate = new DateTime(2005, 5, 12, 19, 27, 28, 395, DateTimeKind.Utc).AddTicks(330),
+                            CreatedAt = new DateTime(2025, 5, 12, 19, 27, 28, 394, DateTimeKind.Utc).AddTicks(9756),
                             Email = "admin@admin.com",
                             FirstLogin = false,
                             Gender = 3,
                             IsActive = true,
                             Name = "ADMIN",
-                            Password = "$2a$11$.O/LJShyMhARjw3pc9kK2ePLKyMUYrkP/3i5bh50lv0Gdlw.npQsi",
+                            Password = "$2a$11$3yz4hD30Q.HxOpPYkTI2iObbk5lHBec5kYVsSXrCn4p98PVvKavQK",
                             Phone = "(11) 99999-9999",
                             Role = "GlobalAdmin",
-                            UpdatedAt = new DateTime(2025, 5, 8, 16, 56, 38, 316, DateTimeKind.Utc).AddTicks(9890)
+                            UpdatedAt = new DateTime(2025, 5, 12, 19, 27, 28, 394, DateTimeKind.Utc).AddTicks(9958)
                         });
                 });
 
@@ -319,6 +356,13 @@ namespace Ryze.Infrastructure.Migrations
                     b.Navigation("Contact");
                 });
 
+            modelBuilder.Entity("Ryze.Domain.Entities.Product", b =>
+                {
+                    b.HasOne("Ryze.Domain.Entities.Lead", null)
+                        .WithMany("Products")
+                        .HasForeignKey("LeadId");
+                });
+
             modelBuilder.Entity("Ryze.Domain.Entities.Team", b =>
                 {
                     b.HasOne("Ryze.Domain.Entities.User", "TeamLead")
@@ -335,6 +379,11 @@ namespace Ryze.Infrastructure.Migrations
                     b.HasOne("Ryze.Domain.Entities.Team", null)
                         .WithMany("TeamMembers")
                         .HasForeignKey("TeamId");
+                });
+
+            modelBuilder.Entity("Ryze.Domain.Entities.Lead", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Ryze.Domain.Entities.Team", b =>
