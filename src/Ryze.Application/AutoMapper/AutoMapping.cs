@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Ryze.Application.Services.Lead.UserCreateLead.Dtos;
 using Ryze.Application.Services.User.CreateUser.Dtos;
 using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
 using Ryze.Application.Services.User.Login.Dtos;
@@ -17,6 +18,7 @@ public class AutoMapping : Profile
     private void RequestToEntityMapping()
     {
         CreateMap<CreateUserRequestDto, User>();
+        CreateMap<UserCreateLeadRequestDto, Lead>();
     }
 
     private void EntityToDto()

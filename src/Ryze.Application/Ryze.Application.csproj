@@ -15,8 +15,4 @@
       <ProjectReference Include="..\Ryze.Infrastructure\Ryze.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Services\Lead\UserCreateLead\" />
-    </ItemGroup>
-
 </Project>
