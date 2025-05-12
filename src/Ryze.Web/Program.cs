@@ -62,6 +62,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.MapScalarApiReference();
+    app.Services.CleanDbContext();
 }
 
 app.UseAuthentication();

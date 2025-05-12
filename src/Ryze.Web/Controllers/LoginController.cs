@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ryze.Application.Services.Login.GetAuthenticatedUser;
 using Ryze.Application.Services.Login.LoginUser;
@@ -47,7 +48,7 @@ public class LoginController : ControllerBase
     [ProducesResponseType(typeof(GetAuthenticatedUserDto), 200)]
     public async Task<IActionResult> GetCurrentAuthenticatedUser([FromServices] IGetAuthenticatedUser service)
     {
-        var user = await service.ExecuteAsync(Guid.Parse(User.FindFirst("id")!.Value));
+        var user = await service.ExecuteAsync(Guid.Parse(User.FindFirst(ClaimTypes.Sid)!.Value));
         
         if (user == null)
         {

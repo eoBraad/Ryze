@@ -32,4 +32,16 @@ public static class InfrastructureDi
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IWorkUnity, WorkUnity>();
     }
+    
+    public static void CleanDbContext(this IServiceProvider services)
+    {
+        using var scope = services.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<RyzeDbContext>();
+        var user = context.Users.FirstOrDefault(u => u.Email == "teste@teste.com");
+        if (user == null)
+            return;
+        
+        context.Users.Remove(user);
+
+    }
 }
