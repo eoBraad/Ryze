@@ -15,7 +15,8 @@ public class LeadController : ControllerBase
     [Authorize]
     public async Task<IActionResult> CreateLead([FromBody] UserCreateLeadRequestDto dto, [FromServices] UserCreateLeadService service)
     {
-        await service.CreateLeadAsync(dto, Guid.Parse(this.User.Claims.First(c => c.Type == ClaimTypes.Sid).Value));
+        var userId = Guid.Parse(User.FindFirst(ClaimTypes.Sid)!.Value);
+        await service.CreateLeadAsync(dto, userId);
         return Created("", null);
     }
 }
