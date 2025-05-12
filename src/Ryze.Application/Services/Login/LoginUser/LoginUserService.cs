@@ -11,7 +11,7 @@ public class LoginUserService(IUserRepository repository,
     IPasswordEncripterGenerator passwordEncripterGenerator, 
     IAccessTokenGenerator tokenGenerator,
     IRefreshTokenGenerator refreshTokenGenerator, 
-    IRefreshTokenRepository refreshTokenRepository) : ILoginUserService
+    IRefreshTokenRepository refreshTokenRepository)
 {
     private readonly IUserRepository _userRepository = repository;
     private readonly IPasswordEncripterGenerator _passwordEncripterGenerator = passwordEncripterGenerator;

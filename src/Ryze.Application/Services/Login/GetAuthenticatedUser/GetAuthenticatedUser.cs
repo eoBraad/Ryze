@@ -5,7 +5,7 @@ using Ryze.Domain.Interfaces.Repositories;
 
 namespace Ryze.Application.Services.Login.GetAuthenticatedUser
 {
-    public class GetAuthenticatedUser(IUserRepository repository, IMapper mapper) : IGetAuthenticatedUser
+    public class GetAuthenticatedUser(IUserRepository repository, IMapper mapper)
     {
         private readonly IUserRepository _userRepository = repository;
         private readonly IMapper _mapper = mapper;

@@ -12,9 +12,9 @@ public static class ApplicationDI
     public static void AddApplicationServices(this IServiceCollection services)
     {
         services.AddAutoMapper(typeof(ApplicationDI));
-        services.AddScoped<ILoginUserService, LoginUserService>();
-        services.AddScoped<IGetAuthenticatedUser, GetAuthenticatedUser>();
-        services.AddScoped<IRefreshJwtService, RefreshJwtService>();
-        services.AddScoped<ICreateUserService, CreateUserService>();
+        services.AddScoped<LoginUserService>();
+        services.AddScoped<GetAuthenticatedUser>();
+        services.AddScoped<RefreshJwtService>();
+        services.AddScoped<CreateUserService>();
     }
 }

@@ -15,7 +15,7 @@ public class UserController : ControllerBase
     [ProducesResponseType(typeof(Guid), 200)]
     [Authorize($"CreateUserRequirement")]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequestDto dto,
-        [FromServices] ICreateUserService service)
+        [FromServices] CreateUserService service)
     {
         var result = await service.CreateUserAsync(dto);
         return Created(result.ToString(), null);
