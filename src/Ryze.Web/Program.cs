@@ -1,12 +1,10 @@
+using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Ryze.Application;
-using Ryze.Domain.Entities;
-using Ryze.Domain.Enums;
 using Ryze.Infrastructure;
-using Ryze.Infrastructure.Database;
+using Ryze.Web.Authorization;
 using Ryze.Web.Filter;
 using Scalar.AspNetCore;
 
@@ -55,9 +53,8 @@ builder.Services.AddAuthentication(options =>
     });
 
 builder.Services.AddAuthorizationBuilder()
-    .AddPolicy(nameof(UserRoles.GlobalAdmin), policy => policy.RequireRole(nameof(UserRoles.GlobalAdmin)))
-    .AddPolicy(nameof(UserRoles.Manager), policy => policy.RequireRole(nameof(UserRoles.GlobalAdmin)))
-    .AddPolicy(nameof(UserRoles.Seller), policy => policy.RequireRole(nameof(UserRoles.GlobalAdmin)));
+    .AddPolicy("CreateUserRequirement", 
+        policy => policy.RequireClaim(ClaimTypes.Role, "GlobalAdmin", "Manager"));
 
 var app = builder.Build();
 
@@ -67,7 +64,7 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseHttpsRedirection();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
