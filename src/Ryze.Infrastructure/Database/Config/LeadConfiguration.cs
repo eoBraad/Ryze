@@ -20,5 +20,7 @@ public class LeadConfiguration : IEntityTypeConfiguration<Lead>
 
         builder.Property(l => l.LeadOrigin)
             .HasConversion<string>();
+        
+        
     }
 }

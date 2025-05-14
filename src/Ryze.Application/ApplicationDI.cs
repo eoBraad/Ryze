@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Ryze.Application.Services.Lead.UserCreateLead;
 using Ryze.Application.Services.Login.GetAuthenticatedUser;
 using Ryze.Application.Services.Login.LoginUser;
 using Ryze.Application.Services.Login.RefreshJwt;
@@ -16,5 +17,6 @@ public static class ApplicationDI
         services.AddScoped<GetAuthenticatedUser>();
         services.AddScoped<RefreshJwtService>();
         services.AddScoped<CreateUserService>();
+        services.AddScoped<UserCreateLeadService>();
     }
 }

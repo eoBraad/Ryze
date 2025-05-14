@@ -4,13 +4,19 @@ namespace Ryze.Domain.Entities;
 
 public class Lead : BaseEntity
 {
-    public Contact Contact { get; set; } = new Contact();
+    public Contact Contact { get; set; } 
     
-    public Company Company { get; set; } = new Company();
+    public Company Company { get; set; } 
     
-    public LeadStatus Status { get; set; }
+    public LeadStatus Status { get; set; } = LeadStatus.New;
 
-    public User AssignedTo { get; set; } = new User();
+    public User AssignedTo { get; set; }
+    
+    public Guid? CompanyId { get; set; }
+    
+    public Guid? ContactId { get; set; }
+    
+    public Guid AssignedToId { get; set; }
 
     public string Description { get; set; } = string.Empty;
     

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Ryze.Infrastructure.Database;
@@ -11,9 +12,11 @@ using Ryze.Infrastructure.Database;
 namespace Ryze.Infrastructure.Migrations
 {
     [DbContext(typeof(RyzeDbContext))]
-    partial class RyzeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250514011815_FixLeadTable")]
+    partial class FixLeadTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace Ryze.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("LeadProduct", b =>
-                {
-                    b.Property<Guid>("LeadsId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("ProductsId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("LeadsId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("LeadProduct");
-                });
 
             modelBuilder.Entity("Ryze.Domain.Entities.Company", b =>
                 {
@@ -184,6 +172,9 @@ namespace Ryze.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid?>("LeadId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -195,6 +186,8 @@ namespace Ryze.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LeadId");
 
                     b.ToTable("Products");
                 });
@@ -318,33 +311,18 @@ namespace Ryze.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("e3f9e4e2-1f34-4d2b-a79f-5c3281a21e9b"),
-                            BirthDate = new DateTime(2005, 5, 14, 1, 21, 18, 496, DateTimeKind.Utc).AddTicks(8978),
-                            CreatedAt = new DateTime(2025, 5, 14, 1, 21, 18, 496, DateTimeKind.Utc).AddTicks(8542),
+                            BirthDate = new DateTime(2005, 5, 14, 1, 18, 14, 548, DateTimeKind.Utc).AddTicks(7088),
+                            CreatedAt = new DateTime(2025, 5, 14, 1, 18, 14, 548, DateTimeKind.Utc).AddTicks(6637),
                             Email = "admin@admin.com",
                             FirstLogin = false,
                             Gender = 3,
                             IsActive = true,
                             Name = "ADMIN",
-                            Password = "$2a$11$NEv.WmQyNlPVGpMFoKuRceXEHYZrzVKyrqeAa9ufsaCGh2M70aoSi",
+                            Password = "$2a$11$j2h9t2I5IV1I0o9sWnS6I.dRZeZTX/fghrAm603BVFT2rejAAUk7G",
                             Phone = "(11) 99999-9999",
                             Role = "GlobalAdmin",
-                            UpdatedAt = new DateTime(2025, 5, 14, 1, 21, 18, 496, DateTimeKind.Utc).AddTicks(8718)
+                            UpdatedAt = new DateTime(2025, 5, 14, 1, 18, 14, 548, DateTimeKind.Utc).AddTicks(6812)
                         });
-                });
-
-            modelBuilder.Entity("LeadProduct", b =>
-                {
-                    b.HasOne("Ryze.Domain.Entities.Lead", null)
-                        .WithMany()
-                        .HasForeignKey("LeadsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Ryze.Domain.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Ryze.Domain.Entities.Company", b =>
@@ -377,6 +355,13 @@ namespace Ryze.Infrastructure.Migrations
                     b.Navigation("Contact");
                 });
 
+            modelBuilder.Entity("Ryze.Domain.Entities.Product", b =>
+                {
+                    b.HasOne("Ryze.Domain.Entities.Lead", null)
+                        .WithMany("Products")
+                        .HasForeignKey("LeadId");
+                });
+
             modelBuilder.Entity("Ryze.Domain.Entities.Team", b =>
                 {
                     b.HasOne("Ryze.Domain.Entities.User", "TeamLead")
@@ -393,6 +378,11 @@ namespace Ryze.Infrastructure.Migrations
                     b.HasOne("Ryze.Domain.Entities.Team", null)
                         .WithMany("TeamMembers")
                         .HasForeignKey("TeamId");
+                });
+
+            modelBuilder.Entity("Ryze.Domain.Entities.Lead", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Ryze.Domain.Entities.Team", b =>
