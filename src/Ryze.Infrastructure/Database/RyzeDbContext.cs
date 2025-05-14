@@ -11,6 +11,7 @@ public class RyzeDbContext(DbContextOptions<RyzeDbContext> options) : DbContext(
     public DbSet<Contact> Contacts { get; set; }
     public DbSet<Team> Teams { get; set; }
     public DbSet<Company> Companies { get; set; }
+    public DbSet<Product> Products { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

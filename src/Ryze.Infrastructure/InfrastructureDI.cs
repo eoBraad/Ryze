@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Ryze.Domain.Interfaces;
 using Ryze.Domain.Interfaces.Generators;
 using Ryze.Domain.Interfaces.Repositories;
 using Ryze.Infrastructure.Database;
@@ -31,6 +32,8 @@ public static class InfrastructureDi
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IWorkUnity, WorkUnity>();
+        services.AddScoped<ILeadRepository, LeadRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
     }
     
     public static void CleanDbContext(this IServiceProvider services)

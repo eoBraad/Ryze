@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Ryze.Application.Services.Lead.UserCreateLead;
 using Ryze.Application.Services.Login.GetAuthenticatedUser;
 using Ryze.Application.Services.Login.LoginUser;
 using Ryze.Application.Services.Login.RefreshJwt;
@@ -12,9 +13,10 @@ public static class ApplicationDI
     public static void AddApplicationServices(this IServiceCollection services)
     {
         services.AddAutoMapper(typeof(ApplicationDI));
-        services.AddScoped<ILoginUserService, LoginUserService>();
-        services.AddScoped<IGetAuthenticatedUser, GetAuthenticatedUser>();
-        services.AddScoped<IRefreshJwtService, RefreshJwtService>();
-        services.AddScoped<ICreateUserService, CreateUserService>();
+        services.AddScoped<LoginUserService>();
+        services.AddScoped<GetAuthenticatedUser>();
+        services.AddScoped<RefreshJwtService>();
+        services.AddScoped<CreateUserService>();
+        services.AddScoped<UserCreateLeadService>();
     }
 }

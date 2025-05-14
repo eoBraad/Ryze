@@ -16,7 +16,7 @@ public class LoginController : ControllerBase
 {
     [HttpPost]
     [ProducesResponseType(typeof(LoginUserResponseDto), 200)]
-    public async Task<IActionResult> LoginUser([FromBody] LoginUserRequestDto dto, [FromServices] ILoginUserService service)
+    public async Task<IActionResult> LoginUser([FromBody] LoginUserRequestDto dto, [FromServices] LoginUserService service)
     {
         var result = await service.LoginUser(dto);
         
@@ -46,7 +46,7 @@ public class LoginController : ControllerBase
     [HttpGet]
     [Authorize]
     [ProducesResponseType(typeof(GetAuthenticatedUserDto), 200)]
-    public async Task<IActionResult> GetCurrentAuthenticatedUser([FromServices] IGetAuthenticatedUser service)
+    public async Task<IActionResult> GetCurrentAuthenticatedUser([FromServices] GetAuthenticatedUser service)
     {
         var user = await service.ExecuteAsync(Guid.Parse(User.FindFirst(ClaimTypes.Sid)!.Value));
         
@@ -61,7 +61,7 @@ public class LoginController : ControllerBase
     [HttpPost($"refresh")]
     [ProducesResponseType(typeof(RefreshTokenResponseDto), 200)]
     public async Task<IActionResult> GetNewRefreshToken([FromBody] RefreshTokenRequestDto dto,
-        [FromServices] IRefreshJwtService service)
+        [FromServices] RefreshJwtService service)
     {
         var result = await service.RefreshToken(dto);
         

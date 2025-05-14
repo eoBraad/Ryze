@@ -6,7 +6,7 @@ using Ryze.Infrastructure.Exceptions;
 
 namespace Ryze.Application.Services.User.CreateUser;
 
-public class CreateUserService(IMapper mapper, IPasswordEncripterGenerator encripterGenerator, IUserRepository userRepository) : ICreateUserService
+public class CreateUserService(IMapper mapper, IPasswordEncripterGenerator encripterGenerator, IUserRepository userRepository)
 {
     private readonly IMapper _mapper = mapper;
     private readonly IPasswordEncripterGenerator _passwordEncripterGenerator = encripterGenerator;

@@ -17,5 +17,10 @@ public class LeadConfiguration : IEntityTypeConfiguration<Lead>
 
         builder.Property(l => l.Status)
             .HasDefaultValue(LeadStatus.New);
+
+        builder.Property(l => l.LeadOrigin)
+            .HasConversion<string>();
+        
+        
     }
 }

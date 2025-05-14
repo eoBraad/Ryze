@@ -9,7 +9,7 @@ namespace Ryze.Application.Services.Login.RefreshJwt;
 
 public class RefreshJwtService(IAccessTokenGenerator accessTokenGenerator, 
     IRefreshTokenGenerator refreshTokenGenerator, 
-    IRefreshTokenRepository refreshTokenRepository, IUserRepository userRepository) : IRefreshJwtService
+    IRefreshTokenRepository refreshTokenRepository, IUserRepository userRepository)
 {
     private readonly IAccessTokenGenerator _accessTokenGenerator = accessTokenGenerator;
     private readonly IRefreshTokenGenerator _refreshTokenGenerator = refreshTokenGenerator;
