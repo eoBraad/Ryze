@@ -16,7 +16,7 @@ public class RyzeExceptionFilter : IExceptionFilter
         }
         else
         {
-            HandleKnownException(context);
+            HandleUnknownException(context);
         }
     }
 
@@ -31,9 +31,9 @@ public class RyzeExceptionFilter : IExceptionFilter
         context.Result = new ObjectResult(response);
     }
     
-    private static void HandleKnownException(ExceptionContext context)
+    private static void HandleUnknownException(ExceptionContext context)
     {
-        var response = new ErrorResponseDto([context.Exception.Message]);
+        var response = new ErrorResponseDto(["Unknown Error, please try again later."]);
 
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
