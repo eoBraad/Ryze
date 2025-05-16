@@ -34,7 +34,7 @@ src/
 
 ```bash
 # Clonar o projeto
-[git clone https://github.com/seuusuario/ryze-crm-backend.git](https://github.com/eoBraad/Ryze.git)
+git clone https://github.com/eoBraad/Ryze.git
 cd Ryze
 
 # Restaurar pacotes
