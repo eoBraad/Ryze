@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ryze.Domain.Entities;
-using Ryze.Domain.Interfaces;
+using Ryze.Domain.Interfaces.Repositories;
 using Ryze.Infrastructure.Database;
 
 namespace Ryze.Infrastructure.Repositories;
