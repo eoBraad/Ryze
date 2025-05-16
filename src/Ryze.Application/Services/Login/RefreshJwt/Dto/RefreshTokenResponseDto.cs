@@ -1,4 +1,4 @@
-﻿namespace Ryze.Application.Services.Login.RefreshJwt.Dtos;
+﻿namespace Ryze.Application.Services.Login.RefreshJwt.Dto;
 
 public class RefreshTokenResponseDto
 {

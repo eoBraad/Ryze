@@ -1,6 +1,6 @@
 ﻿using Ryze.Domain.Enums;
 
-namespace Ryze.Application.Services.User.CreateUser.Dtos;
+namespace Ryze.Application.Services.User.CreateUser.Dto;
 
 public class CreateUserRequestDto
 {

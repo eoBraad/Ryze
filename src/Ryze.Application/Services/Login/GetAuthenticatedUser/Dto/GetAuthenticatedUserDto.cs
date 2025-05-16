@@ -1,6 +1,6 @@
 ﻿using Ryze.Domain.Enums;
 
-namespace Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
+namespace Ryze.Application.Services.Login.GetAuthenticatedUser.Dto;
 
 public class GetAuthenticatedUserDto
 {

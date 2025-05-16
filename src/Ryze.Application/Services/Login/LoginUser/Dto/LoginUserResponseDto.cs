@@ -1,4 +1,4 @@
-﻿namespace Ryze.Application.Services.User.Login.Dtos;
+﻿namespace Ryze.Application.Services.Login.LoginUser.Dto;
 
 public class LoginUserResponseDto
 {

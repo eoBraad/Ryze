@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using Ryze.Application.Services.User.Login.Dtos;
+using Ryze.Application.Services.Login.LoginUser.Dto;
 using Ryze.Domain.Entities;
 using Ryze.Domain.Interfaces.Generators;
 using Ryze.Domain.Interfaces.Repositories;

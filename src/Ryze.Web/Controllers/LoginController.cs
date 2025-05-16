@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Ryze.Application.Services.Login.GetAuthenticatedUser;
 using Ryze.Application.Services.Login.LoginUser;
 using Ryze.Application.Services.Login.RefreshJwt;
-using Ryze.Application.Services.Login.RefreshJwt.Dtos;
-using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
-using Ryze.Application.Services.User.Login.Dtos;
+using Ryze.Application.Services.Login.RefreshJwt.Dto;
+using Ryze.Application.Services.Login.GetAuthenticatedUser.Dto;
+using Ryze.Application.Services.Login.LoginUser.Dto;
 
 namespace Ryze.Web.Controllers;
 

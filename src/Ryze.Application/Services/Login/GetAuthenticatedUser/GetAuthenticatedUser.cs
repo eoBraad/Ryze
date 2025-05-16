@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Ryze.Infrastructure.Exceptions;
-using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
+using Ryze.Application.Services.Login.GetAuthenticatedUser.Dto;
 using Ryze.Domain.Interfaces.Repositories;
 
 namespace Ryze.Application.Services.Login.GetAuthenticatedUser

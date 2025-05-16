@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Ryze.Application.Services.User.Login.Dtos;
+using Ryze.Application.Services.Login.LoginUser.Dto;
 
 namespace Ryze.Application.Services.Login.LoginUser;
 

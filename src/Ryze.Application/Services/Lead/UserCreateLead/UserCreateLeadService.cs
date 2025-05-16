@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using Ryze.Application.Services.Lead.UserCreateLead.Dtos;
-using Ryze.Domain.Entities;
-using Ryze.Domain.Interfaces;
+using Ryze.Application.Services.Lead.UserCreateLead.Dto;
 using Ryze.Domain.Interfaces.Repositories;
 using Ryze.Infrastructure.Exceptions;
 

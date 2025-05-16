@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Ryze.Application.Services.User.CreateUser.Dtos;
+using Ryze.Application.Services.User.CreateUser.Dto;
 
 namespace Ryze.Application.Services.User.CreateUser;
 

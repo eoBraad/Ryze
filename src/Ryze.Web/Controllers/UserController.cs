@@ -1,9 +1,7 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ryze.Application.Services.User.CreateUser;
-using Ryze.Application.Services.User.CreateUser.Dtos;
-using Ryze.Domain.Enums;
+using Ryze.Application.Services.User.CreateUser.Dto;
 
 namespace Ryze.Web.Controllers;
 

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Ryze.Application.Services.Login.RefreshJwt.Dtos;
+using Ryze.Application.Services.Login.RefreshJwt.Dto;
 
 namespace Ryze.Application.Services.Login.RefreshJwt;
 

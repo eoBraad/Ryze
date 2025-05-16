@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using Ryze.Application.Services.Lead.UserCreateLead.Dtos;
-using Ryze.Application.Services.User.CreateUser.Dtos;
-using Ryze.Application.Services.User.GetAuthenticatedUser.Dtos;
-using Ryze.Application.Services.User.Login.Dtos;
+using Ryze.Application.Services.Lead.UserCreateLead.Dto;
+using Ryze.Application.Services.User.CreateUser.Dto;
+using Ryze.Application.Services.Login.GetAuthenticatedUser.Dto;
 using Ryze.Domain.Entities;
 
 namespace Ryze.Application.AutoMapper;

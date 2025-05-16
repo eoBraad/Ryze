@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Ryze.Application.Services.Lead.UserCreateLead.Dtos;
+using Ryze.Application.Services.Lead.UserCreateLead.Dto;
 
 namespace Ryze.Application.Services.Lead.UserCreateLead;
 

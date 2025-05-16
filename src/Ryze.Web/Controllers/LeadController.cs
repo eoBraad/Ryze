@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ryze.Application.Services.Lead.UserCreateLead;
-using Ryze.Application.Services.Lead.UserCreateLead.Dtos;
+using Ryze.Application.Services.Lead.UserCreateLead.Dto;
 
 namespace Ryze.Web.Controllers;
 

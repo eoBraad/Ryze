@@ -1,6 +1,6 @@
 ﻿using Ryze.Domain.Enums;
 
-namespace Ryze.Application.Services.Lead.UserCreateLead.Dtos;
+namespace Ryze.Application.Services.Lead.UserCreateLead.Dto;
 
 public class UserCreateLeadRequestDto
 {

@@ -1,5 +1,4 @@
-﻿using Microsoft.Identity.Client;
-using Ryze.Application.Services.Login.RefreshJwt.Dtos;
+﻿using Ryze.Application.Services.Login.RefreshJwt.Dto;
 using Ryze.Domain.Entities;
 using Ryze.Domain.Interfaces.Generators;
 using Ryze.Domain.Interfaces.Repositories;

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Ryze.Application.Services.User.CreateUser.Dtos;
+using Ryze.Application.Services.User.CreateUser.Dto;
 using Ryze.Domain.Interfaces.Generators;
 using Ryze.Domain.Interfaces.Repositories;
 using Ryze.Infrastructure.Exceptions;
