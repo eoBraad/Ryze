@@ -16,11 +16,11 @@ Back-end do **Ryze CRM**, um sistema de gerenciamento de relacionamento com clie
 
 ## 📁 Estrutura do Projeto (Clean Architecture)
 
-src/
-├── Ryze.CRM.Web # Camada de apresentação (controllers, middlewares)
-├── Ryze.CRM.Application # Regras de negócio (casos de uso, DTOs, interfaces)
-├── Ryze.CRM.Domain # Entidades e enums
-└── Ryze.CRM.Infrastructure # Banco de dados, serviços externos, implementações
+src/ <br>
+├── Ryze.CRM.Web # Camada de apresentação (controllers, middlewares) <br>
+├── Ryze.CRM.Application # Regras de negócio (casos de uso, DTOs, interfaces) <br>
+├── Ryze.CRM.Domain # Entidades e enums <br>
+└── Ryze.CRM.Infrastructure # Banco de dados, serviços externos, implementações <br>
 
 ## ⚙️ Como rodar
 
