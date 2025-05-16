@@ -6,4 +6,15 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Bogus" Version="35.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Ryze.Application\Ryze.Application.csproj" />
+      <ProjectReference Include="..\..\src\Ryze.Domain\Ryze.Domain.csproj" />
+      <ProjectReference Include="..\..\src\Ryze.Infrastructure\Ryze.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\src\Ryze.Web\Ryze.Web.csproj" />
+    </ItemGroup>
+
 </Project>

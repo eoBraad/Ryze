@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Ryze.Application;
 using Ryze.Infrastructure;
-using Ryze.Web.Authorization;
 using Ryze.Web.Filter;
 using Scalar.AspNetCore;
 
@@ -74,3 +73,6 @@ app.UseCors("AllowAll");
 app.MapControllers();
 
 app.Run();
+
+
+public partial class Program {}
