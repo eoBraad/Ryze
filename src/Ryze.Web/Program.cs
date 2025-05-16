@@ -22,9 +22,9 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", builder =>
+    options.AddPolicy("AllowAll", b =>
     {
-        builder.AllowAnyOrigin()
+        b.AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
