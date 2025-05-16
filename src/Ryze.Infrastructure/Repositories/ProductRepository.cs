@@ -12,4 +12,9 @@ public class ProductRepository(RyzeDbContext dbContext) : IProductRepository
     {
         return await _context.Products.Where(p => productIds.Contains(p.Id)).ToListAsync();
     }
+
+    public async Task CreateProductAsync(Product product)
+    {
+        await _context.Products.AddAsync(product);
+    }
 }
