@@ -11,7 +11,7 @@ public class UserController : ControllerBase
 {
     [HttpPost]
     [ProducesResponseType(typeof(Guid), 200)]
-    [Authorize($"CreateUserRequirement")]
+    [Authorize($"ConfigureOperationPolicy")]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequestDto dto,
         [FromServices] CreateUserService service)
     {

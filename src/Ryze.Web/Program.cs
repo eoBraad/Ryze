@@ -53,7 +53,7 @@ builder.Services.AddAuthentication(options =>
     });
 
 builder.Services.AddAuthorizationBuilder()
-    .AddPolicy("CreateUserRequirement", 
+    .AddPolicy("ConfigureOperationPolicy", 
         policy => policy.RequireClaim(ClaimTypes.Role, "GlobalAdmin", "Manager"));
 
 var app = builder.Build();

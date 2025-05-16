@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Ryze.Application.Services.Product.CreateProduct;
 using Ryze.Application.Services.Product.CreateProduct.Dto;
 
@@ -9,6 +10,7 @@ namespace Ryze.Web.Controllers;
 public class ProductController : ControllerBase
 {
     [HttpPost]
+    [Authorize("ConfigureOperationPolicy")]
     public async Task<IActionResult> CreateProduct([FromBody] CreateProductDtoRequest request, [FromServices] CreateProductService service)
     {
         await service.CreateProduct(request);
