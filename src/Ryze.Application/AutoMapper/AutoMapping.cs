@@ -2,6 +2,7 @@
 using Ryze.Application.Services.Lead.UserCreateLead.Dto;
 using Ryze.Application.Services.User.CreateUser.Dto;
 using Ryze.Application.Services.Login.GetAuthenticatedUser.Dto;
+using Ryze.Application.Services.Product.CreateProduct.Dto;
 using Ryze.Domain.Entities;
 
 namespace Ryze.Application.AutoMapper;
@@ -18,6 +19,7 @@ public class AutoMapping : Profile
     {
         CreateMap<CreateUserRequestDto, User>();
         CreateMap<UserCreateLeadRequestDto, Lead>();
+        CreateMap<CreateProductDtoRequest, Product>();
     }
 
     private void EntityToDto()
