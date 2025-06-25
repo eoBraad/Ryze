@@ -9,19 +9,23 @@ public class LeadRepository(RyzeDbContext ryzeDbContext, IWorkUnity workUnity) :
 {
     private readonly RyzeDbContext _dbContext = ryzeDbContext;
     private readonly IWorkUnity _workUnity = workUnity;
-    
+
     public async Task<List<Lead>> GetLeadsAsync(int page = 1, int pageSize = 25)
     {
         if (page < 1)
             throw new ArgumentException("Page must be greater than or equal to 1.");
-        
+
         if (pageSize < 1)
             throw new ArgumentException("Page size must be greater than or equal to 1.");
-        
+
         var skip = (page - 1) * pageSize;
-        
+
         var leads = await _dbContext.Leads
             .AsNoTracking()
+            .Include(l => l.Products)
+            .Include(l => l.AssignedTo)
+            .Include(l => l.Company)
+            .Include(l => l.Contact)
             .Select(l => new Lead
             {
                 Id = l.Id,
@@ -58,7 +62,7 @@ public class LeadRepository(RyzeDbContext ryzeDbContext, IWorkUnity workUnity) :
             .Skip(skip)
             .Take(pageSize)
             .ToListAsync();
-        
+
         return leads;
     }
 
@@ -66,6 +70,10 @@ public class LeadRepository(RyzeDbContext ryzeDbContext, IWorkUnity workUnity) :
     {
         return await _dbContext.Leads
             .AsNoTracking()
+            .Include(l => l.Products)
+            .Include(l => l.AssignedTo)
+            .Include(l => l.Company)
+            .Include(l => l.Contact)
             .Select(l => new Lead
             {
                 Id = l.Id,
@@ -105,6 +113,10 @@ public class LeadRepository(RyzeDbContext ryzeDbContext, IWorkUnity workUnity) :
     {
         return await _dbContext.Leads
             .AsNoTracking()
+            .Include(l => l.Products)
+            .Include(l => l.AssignedTo)
+            .Include(l => l.Company)
+            .Include(l => l.Contact)
             .Select(l => new Lead
             {
                 Id = l.Id,
@@ -137,6 +149,7 @@ public class LeadRepository(RyzeDbContext ryzeDbContext, IWorkUnity workUnity) :
                     Phone = l.Contact.Phone,
                 }
             })
+            .OrderByDescending(l => l.CreatedAt)
             .Where(c => c.AssignedTo.Id == userId)
             .ToListAsync();
     }
@@ -145,5 +158,73 @@ public class LeadRepository(RyzeDbContext ryzeDbContext, IWorkUnity workUnity) :
     {
         _dbContext.Leads.Add(lead);
         await _workUnity.SaveChangesAsync();
+    }
+
+    public async Task<List<Lead>> GetUserLeadsMonthlyAsync(Guid userId, int page = 1, int pageSize = 25)
+    {
+        if (page < 1)
+            throw new ArgumentException("Page must be greater than or equal to 1.");
+
+        if (pageSize < 1)
+            throw new ArgumentException("Page size must be greater than or equal to 1.");
+
+        var skip = (page - 1) * pageSize;
+        
+        return await _dbContext.Leads
+            .AsNoTracking()
+            .Include(l => l.Products)
+            .Include(l => l.AssignedTo)
+            .Include(l => l.Company)
+            .Include(l => l.Contact)
+            .Select(l => new Lead
+            {
+                Id = l.Id,
+                AssignedTo = new User
+                {
+                    Id = l.AssignedTo.Id,
+                    Name = l.AssignedTo.Name,
+                },
+                CreatedAt = l.CreatedAt,
+                Description = l.Description,
+                Status = l.Status,
+                Products = l.Products.Select(p => new Product
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                }).ToList(),
+                LeadOrigin = l.LeadOrigin,
+                Company = new Company
+                {
+                    Id = l.Company.Id,
+                    CompanyName = l.Company.CompanyName,
+                    CompanyCnpj = l.Company.CompanyCnpj,
+                    CompanyPhone = l.Company.CompanyPhone,
+                },
+                Contact = new Contact
+                {
+                    FirstName = l.Contact.FirstName,
+                    LastName = l.Contact.LastName,
+                    Email = l.Contact.Email,
+                    Phone = l.Contact.Phone,
+                }
+            })
+            .Skip(skip)
+            .OrderByDescending(l => l.CreatedAt)
+            .Where(c => c.AssignedTo.Id == userId && c.CreatedAt.Month == DateTime.Now.Month && c.CreatedAt.Year == DateTime.Now.Year)
+            .ToListAsync();
+    }
+
+    public async Task<int> GetTotalPagesAsync(int page = 1, int pageSize = 25)
+    {
+        if (page < 1)
+            throw new ArgumentException("Page must be greater than or equal to 1.");
+
+        if (pageSize < 1)
+            throw new ArgumentException("Page size must be greater than or equal to 1.");
+
+        var totalLeads = await _dbContext.Leads.CountAsync();
+        var totalPages = (int)Math.Ceiling((double)totalLeads / pageSize);
+
+        return totalPages;
     }
 }

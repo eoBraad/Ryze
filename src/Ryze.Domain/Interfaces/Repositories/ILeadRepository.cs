@@ -8,4 +8,8 @@ public interface ILeadRepository
     Task<Lead?> GetLeadByIdAsync(Guid id);
     Task<List<Lead>> GetLeadsByUserIdAsync(Guid userId, int page = 1, int pageSize = 10);
     Task CreateAsync(Lead lead);
+    
+    Task<List<Lead>> GetUserLeadsMonthlyAsync(Guid userId, int page = 1, int pageSize = 25);
+    
+    Task<int> GetTotalPagesAsync(int page = 1, int pageSize = 25);
 }
